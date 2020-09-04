@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ScrollView = styled.div`
+  over-flow: auto;
+  height: 100%;
+`;
 
 function SectionList(props) {
   const { data, renderHeader, renderRow } = props;
@@ -12,10 +18,10 @@ function SectionList(props) {
     return viewList;
   }, []);
   return (
-    <>
+    <ScrollView>
       {sections}
-    </>
+    </ScrollView>
   );
 }
 
-export default SectionList;
+export default React.memo(SectionList);
