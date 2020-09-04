@@ -1,10 +1,14 @@
-const initialState = {
-  orders: []
-}
+import Immutable from 'immutable';
 
-export default function reducer(state, action) {
-  if (typeof state === 'undefined') {
-    return initialState
+const initialState = Immutable.Map({
+  orders: []
+})
+
+export default function reducer(state = initialState, action) {
+  switch(action.type) {
+    case 'LOAD_ORDERS':
+      return state.set('orders', action.orders);
+    default:
+      return state;
   }
-  return state
 }
