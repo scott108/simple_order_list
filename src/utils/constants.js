@@ -1,0 +1,12 @@
+const GROUP_PROCESSING = '進行中';
+const GROUP_COMPLETED = '已完成';
+const GROUP_RULES = {
+  1: GROUP_PROCESSING,
+  2: GROUP_PROCESSING,
+  3: GROUP_COMPLETED,
+  4: GROUP_COMPLETED,
+};
+
+export {
+  GROUP_RULES,
+}

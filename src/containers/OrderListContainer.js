@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { mockGet } from 'utils/mockHttp.js';
+import { mockGet } from 'utils/mockHttp';
 import { orderGroupByStatus } from 'utils/utils';
 import SectionList from 'components/SectionList';
 import styled from 'styled-components';
@@ -7,15 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
-const GROUP_PROCESSING = '進行中';
-const GROUP_COMPLETED = '已完成';
-const groupRules = {
-  1: GROUP_PROCESSING,
-  2: GROUP_PROCESSING,
-  3: GROUP_COMPLETED,
-  4: GROUP_COMPLETED,
-};
+import { GROUP_RULES } from 'utils/constants';
 
 const Header = styled.div`
   display: flex;
@@ -64,7 +56,7 @@ function OrderListContainer() {
   useEffect(() => {
     const getData = async () => {
       const result = await mockGet()
-      const orderGroup = orderGroupByStatus(result.orders, groupRules)
+      const orderGroup = orderGroupByStatus(result.orders, GROUP_RULES)
       dispatch({
         type: 'LOAD_ORDERS',
         orders: orderGroup,
